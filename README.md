@@ -17,3 +17,17 @@ This notebook shows the data cleaning process for the second part. These were th
 The resulting .csv file from the data cleaning process was loaded into Microsoft SQL Server.
 
 A web service using ASP.NET and C# was done, but could only output all users' data because I had difficulties in making the SQL query inside the code work. I tried tweaking the syntax but sometimes they output null and sometimes just an empty space. I wasn't able to verify which part of the code doesn't work with the given SQL query string.
+
+## Answers to Questions 
+**Q1.** If the data is to ingested periodically, what changes will you make to your current approach?
+
+**A1.** If the data is to ingested periodically, I would perhaps create a cloud function that I could schedule to run periodically. Additionally, I would create an ETL pipeline and adjust its cron schedule to run periodically as well. 
+
+**Q2.** Draw a data architecture showing different components of your ETL process.
+
+**A2.** The data source passes the raw data to the data cleaning module/process. The cleaned data is then loaded to a database, which is connected to the API. The output devices connect to the API and communicates the data it wants to receive. 
+![plot](./images/data_architecture.png)
+
+**Q3.** How will you verify the correctness of the ingested data?
+
+**A3.** I could write queries to manually verify whether data is coherent. I could also do comparisons to the output data and the raw data to check if the data has been processed and passed correctly.
